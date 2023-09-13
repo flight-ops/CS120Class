@@ -9,3 +9,9 @@ print(type(my_operand_1))
 result = str(my_operand_1) + my_operand_2
 
 print(result, type(result))
+
+
+def add_numbers (a,b):
+    a = int(input("what first number"))
+    b = int(input("what second number"))
+    return (a+b)
