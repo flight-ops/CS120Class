@@ -1,6 +1,5 @@
 total_employee_count = int(input("How many gross pay values do you need?"))
 
-
 employee_name_list=['' for i in range (total_employee_count)]
 hours_worked_list=['' for i in range (total_employee_count)]
 hourly_pay_list=['' for i in range (total_employee_count)]
@@ -17,10 +16,9 @@ while flag < (total_employee_count):
     print(hours_worked_list)
     flag+=1
     
-
+print("Okay, here is how much money everyone made.")
 for iterator in range(total_employee_count):
     gross_pay_list[iterator] = hourly_pay_list[iterator] * hours_worked_list[iterator]
+    print(employee_name_list[iterator])
+    print(gross_pay_list[iterator])
 
-print("Okay, here is how much money everyone made.")
-print(employee_name_list)
-print(gross_pay_list)
