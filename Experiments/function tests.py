@@ -1,11 +1,17 @@
-def add_numbers (a,b):
-    a = int(input("what first number"))
-    b = int(input("what second number"))
-    return (a+b)
-
 loop = 0
 
+
+
+
+
+
+
+
+def generic_function (function_var_1, function_var_2):
+    function_var_1 += 1
+
 while loop <= 10:
+    generic_function
+    loop+=1
     print(loop)
-    print(add_numbers)
-    loop += 1
+    print()

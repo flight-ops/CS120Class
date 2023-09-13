@@ -1,21 +1,20 @@
 total_employee_count = int(input("How many gross pay values do you need?"))
 
 
-employee_name_list=[0 for i in range (total_employee_count)]
-hours_worked_list=[0 for i in range (total_employee_count)]
-hourly_pay_list=[0 for i in range (total_employee_count)]
-gross_pay_list = [0 for i in range (total_employee_count)]
+employee_name_list=['' for i in range (total_employee_count)]
+hours_worked_list=['' for i in range (total_employee_count)]
+hourly_pay_list=['' for i in range (total_employee_count)]
+gross_pay_list = ['' for i in range (total_employee_count)]
 
 flag = 0
 while flag < (total_employee_count):
-    print(flag)
+    print("Employee" , str(flag+1))
     employee_name_list[flag] = input("What is your name?")
     print(employee_name_list)
     hourly_pay_list[flag] = float(input("Enter your pay rate"))
     print(hourly_pay_list)
     hours_worked_list[flag] = float(input("Enter your hours worked"))
     print(hours_worked_list)
-    
     flag+=1
     
 
