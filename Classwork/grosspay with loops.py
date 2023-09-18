@@ -1,6 +1,6 @@
 total_employee_count = int(input("How many gross pay values do you need?"))
 
-employee_name_list=['' for i in range (total_employee_count)]
+employee_name_list= ['' for i in range (total_employee_count)]
 hours_worked_list=['' for i in range (total_employee_count)]
 hourly_pay_list=['' for i in range (total_employee_count)]
 gross_pay_list = ['' for i in range (total_employee_count)]
