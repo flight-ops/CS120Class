@@ -7,11 +7,13 @@ def main():
     
     print(void_function_for_fun())
 
+    def hello_statement():
+        return "hello world"
+
+    print (hello_statement())
+
+
 main()
 
 
 
-def hello_statement():
-    return "hello world"
-
-print (hello_statement())
