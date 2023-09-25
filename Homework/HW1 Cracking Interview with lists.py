@@ -1,13 +1,17 @@
+# Objective: compress a string ex. abbccddeeee into something like "a1b2c2d2e4" with a letter and its counts
+
 #main function
 def main():
     #create variable to store string to be operated on, or maybe catch a user's input
-    operand_string = "abbccddeeee"
+    operand_string = input("What is the string you'd like to enter?")
+    #convert to lowercase for convenience
+    lowercase_converted_string = operand_string.lower()
     #operand_string = input("What is the string you'd like to compress?" (Only alphabet letters will appear in the result.))
     #create a list for all of the letters in the alphabet to check against
     alphabet_container_list = list("abcdefghijklmnopqrstuvwxyz")
 
     #convert the string provided either by default or by the user to a list or set
-    operand_list = list(operand_string)
+    operand_list = list(lowercase_converted_string)
 
     
 
@@ -15,7 +19,7 @@ def main():
     print("Original string:",operand_string)
     print("String in list form:",operand_list)
    
-    
+    #define a function to search for a letter
     def letter_searcher():
         #create a variable to store the output of the loop.
         output_string = ""
@@ -33,9 +37,17 @@ def main():
                 output_string = output_string + str(specific_letter_count)
                 print(output_string)
         return (output_string)
+    
+
+    #print a message for the user
     print("Compressing string...")
+    #create a variable to store the value that letter_searcher() returns
     final_string = letter_searcher()
+    #print the string so that the user can see it
     print("Compressed string:",final_string)
 
 #call the function
 main()
+
+#result: desired result achieved, but really went way above and beyond (didn't really need the letters to be in order at all)
+#reflection: was a good exercise in programming.
