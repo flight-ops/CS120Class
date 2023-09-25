@@ -50,4 +50,4 @@ def main():
 main()
 
 #result: desired result achieved, but really went way above and beyond (didn't really need the letters to be in order at all)
-#reflection: was a good exercise in programming.
+#reflection: was a good exercise in programming. and syntax. and control structures.
