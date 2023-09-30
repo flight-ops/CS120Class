@@ -1,9 +1,9 @@
 def main():
     def user_prompt():
-
-    def run_operations(operand1, operand2):
-
-    def output_print():
+        return
+    
+    def operations(operand1, operator, operand2):
+        return
     
 #objective: Calculator program with result type conversion based on users' input.
 

@@ -1,5 +1,6 @@
 #running the program repeatedly without inputting anything will cause ValueErrors
 #i.e., there is no defined error-state to handle empty inputs
+#it will, however, work as intended if you run it AGAIN after the ValueError
 looper = 0
 #Program start
 def main():
