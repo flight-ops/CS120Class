@@ -23,5 +23,6 @@ def main():
 
     print("\nThe force imparted is", calculate_force(float(user_input_mass),float(user_input_acceleration)), "Newtons")
 
+#do the thing forever
 while beep_boop_bop == 4:
     main()
