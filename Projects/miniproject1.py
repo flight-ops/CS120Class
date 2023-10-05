@@ -1,8 +1,18 @@
-#create functions for potential combinations of inputs and outputs
+#inputs are only decimal values
 
 
-def check_input_type():
+def check_input_type(first_input, second_input):
+    return
+
+
+def check_for_types(user_input_1,user_input_2):
+    user_operand_types_bool = check_input_type(user_input_1,user_input_2)
+    if condition:
+        print("Continuing.")
+    elif condition false:
+        print("Error: an anomaly has occurred.")
     pass
+
 
 def hex_to_decimal(hex_input):
     decimal_output = print(int(str(hex_input), base=16))
@@ -13,12 +23,18 @@ def decimal_to_hex(decimal_input):
     return hex_output
     
 def binary_to_decimal(binary_input):
-    
     decimal_output = print
     return decimal_output
-    
+
+def decimal_to_binary(decimal_input):
+    binary_output = print
+    return binary_output
+
 def main():
-    check_input_type()
+    user_input_1 = input("What is the first value you'd like to input?")
+    user_input_2 = input("What is the second value you'd like to input?")
+    check_for_types(user_input_1,user_input_2)
+
     #prompt user for inputs
     
 
