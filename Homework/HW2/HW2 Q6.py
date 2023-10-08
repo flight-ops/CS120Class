@@ -26,4 +26,9 @@ def main():
     mass_main, height_main= grab_inputs()
     zero_present_condition = check_inputs_for_zero(mass_main,height_main)
     calculate_mgh(mass_main,height_main,g_constant,zero_present_condition)
+
+
+
+
+
 main()

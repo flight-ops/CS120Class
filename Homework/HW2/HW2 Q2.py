@@ -1,24 +1,24 @@
 #function determines whether one string is a rotation of the other
-
+#variable naming convention: [input/output]_[data type]_[scope]_[container function]
 
 def reverse_checking_string(original_string,checking_string):
     #typecast strings to lists to make use of the 'reverse' method
     original_string_to_list = list(original_string)
     checking_string_to_list = list(checking_string)
 
-    #reverse the second list, the one being checked for rotation, to compare to the first list
-    #in other words, if we apply a reversal twice (i.e., a double negative) to the second string, it SHOULD be equal to the first one.
+    #if the second string IS a rotation of the first, then reversing the second string SHOULD make it equal to the first string
+    #reverse the list form of the second string to check against the list form of the original string
     checking_string_to_list.reverse()
 
    #store list in a variable
     reversed_checking_list = checking_string_to_list
     
-    #return the two lists
+    #return the two lists to pass onto next function
     return original_string_to_list, reversed_checking_list
 
-#check if the two lists are identical
+#check if the two lists are identical, return boolean to provide as argument to next function
+
 def reverse_condition_checker(original_list, checking_list):
-    
     if original_list == checking_list:
         reverse_true_condition_local = True
     else:
@@ -42,9 +42,10 @@ def main():
     string_for_checking_input =input("What string would you like to check?")
     #feed user inputs to reverse_checking_string to obtain the two strings in list form
     original_list_main, reversed_checking_list_main = reverse_checking_string(original_string_input,string_for_checking_input)
-    
-    #check the original string and the now-reversed rotation string
+
+    #check the original string and the now-reversed rotation string, get a boolean for whether or not the strings are rotated or not
     reverse_true_condition_main = reverse_condition_checker(original_list_main,reversed_checking_list_main)
+    #print appropriate output given the boolean condition describing whether or not the strings are rotated versions of each other.
     print_output(original_string_input,string_for_checking_input,reverse_true_condition_main)
 
 #call main
