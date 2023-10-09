@@ -5,11 +5,13 @@
 #variable naming convention: [input/output]_[data type]_[scope]_[container function abbreviation]
 
 def string_to_list_conversion(input_string_local_stlc):
-    #take argument and convert to list
+    #take input string from user and convert to list
     input_list_local_stlc = list(input_string_local_stlc)
     
     #create a copy of the original list to avoid pass-by-value stupidity
     reversed_list_local_stlc = input_list_local_stlc.copy()
+
+    #reverse copied list
     reversed_list_local_stlc.reverse()
 
     #return local lists to main function
@@ -26,6 +28,7 @@ def check_lists_for_reciprocity(input_list_local_clfr,reversed_list_local_clfr):
 
     return palindrome_true_false_local
 
+#does as the name suggests
 def print_to_user(input_string_ptu, palindrome_true_false_ptu):
         if palindrome_true_false_ptu == True:
             print(input_string_ptu, "is a palindrome.")
@@ -35,14 +38,18 @@ def print_to_user(input_string_ptu, palindrome_true_false_ptu):
 def main():
     print("Palindrome Tester")
     input_string_main = input("What string would you like to test?")
-    #obtain a list returned from the function 
+
+    #obtain two lists returned from the function, one normal and one reversed
     input_list_main, reverse_input_list_main = string_to_list_conversion(input_string_main)
 
+    #check to see if the two lists are identical, if so, set palindrome condition to true
     palindrome_true_false_main = check_lists_for_reciprocity(input_list_main,reverse_input_list_main)
 
+    #if palindrome condition true/false, print appropriate message to user
     print_to_user(input_string_main,palindrome_true_false_main)
 
 
+#check strings until the user is satisfied
 i = 10
 while i == 10:
     main()
