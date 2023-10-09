@@ -25,7 +25,7 @@ def calculate_interest(zero_condition_main, principal_local_cl,rate_per_term_loc
 
         
         
-def print_summary(principal_local_p, rate_local_p, number_of_applications_local_p, time_local_p, rate_per_term_local_p, applications_total_local_p, final_value_local_p):
+def print_summary(zero_condition_local_p,principal_local_p, rate_local_p, number_of_applications_local_p, time_local_p, rate_per_term_local_p, applications_total_local_p, final_value_local_p):
     print("Summary:"
           "\nThe initial value of your cash was:",principal_local_p,"dollars."
           "\nThe rate provided was:",rate_local_p*100,"%"
@@ -36,6 +36,8 @@ def print_summary(principal_local_p, rate_local_p, number_of_applications_local_
           "\n\nThe rate was applied a total of",applications_total_local_p,"times."
           #round to three decimal places to avoid unnecessary digits 
           "\n\nAfter",applications_total_local_p,"terms, the value of your money is:",round(final_value_local_p,3),"dollars,")
+    if zero_condition_local_p == True:
+        print("\n---!!!---    Error! One or more critical values have been set to zero.  Double check your numbers.   ---!!!---")
     
 
 def main():
@@ -55,6 +57,6 @@ def main():
     final_value_main = calculate_interest(zero_condition_main, principal_main, rate_per_term_main, applications_total_main)
     
     #print a summary of the user's inputs and other relevant information. 
-    print_summary(principal_main,rate_main,number_of_applications_main,time_main,rate_per_term_main,applications_total_main,final_value_main)
+    print_summary(zero_condition_main,principal_main,rate_main,number_of_applications_main,time_main,rate_per_term_main,applications_total_main,final_value_main)
 
 main()
