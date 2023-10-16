@@ -19,3 +19,9 @@ def find_max_cost(sale_list,cost_list):
 
 find_min_cost(sale_list=groceries_for_sale, cost_list=cost_of_groceries)
 find_max_cost(sale_list=groceries_for_sale, cost_list=cost_of_groceries)
+
+user_cash = float(input("How much money do you have?\n"))
+
+for i in range (len(cost_of_groceries)):
+    if cost_of_groceries[i] <= user_cash:
+        print("You can afford:", groceries_for_sale[i], "which costs", cost_of_groceries[i], "dollars.")
