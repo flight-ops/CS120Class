@@ -22,18 +22,7 @@ def create_tuple():
 #create tuple
 
 
-#perform math operations on values inside the tuples
 
-def calculate_distance(point1,point2):
-    #sum x-vals and square them
-    sum_of_x_squared = (point1[1]+point2[1])**2
-    #sum y-vals and square them
-    sum_of_y_squared = (point1(2)+point2[2])**2
-
-
-    distance_local_cd = (sum_of_x_squared+sum_of_y_squared) ** (1/2)
-
-    return distance_local_cd
 
 
 
@@ -46,7 +35,11 @@ def main():
     user_point_tuple_2_main = create_tuple()
     print (user_point_tuple_2_main)
     
-    print(calculate_distance(user_point_tuple_1_main,user_point_tuple_2_main))
-
+   #sum x-vals and square them
+    sum_of_x_squared = (float(user_point_tuple_1_main[0])+float(user_point_tuple_2_main[1]))**2
+    #sum y-vals and square them
+    sum_of_y_squared = (float(user_point_tuple_1_main[0])+float(user_point_tuple_2_main[1]))**2
+    distance_main = (sum_of_x_squared+sum_of_y_squared) ** (1/2)
+    print(distance_main)
 
 main()
