@@ -53,15 +53,15 @@ def decimal_to_binary(decimal_input):
 
         
 #function allows user to operate on a running total continuously if they so choose
-def primary_operation_loop(initial_value_local_oj):
+def primary_operation_loop(initial_value_local_pol):
         #break condition is false, initially
         user_break_condition = False
-        subtotal_pol = float(initial_value_local_oj)
+        subtotal_pol = float(initial_value_local_pol)
 
         while user_break_condition == False:
             user_chosen_operation = input("Which operation would you like to perform? Choices are: \nadd, subtract, multiply, divide, modulus, exponent, and no_op.\n")
-            #if user chooses no_op, no operation will be performed on the initial value. If the user just wants to convert something, they can skip one or two steps and convert directly, rather than
-            #adding zero or multiplying by 1
+            #if user chooses no_op, no operation will be performed on the initial value. If the user just wants to convert something, they can skip one or two steps and 
+            #convert directly, rather than adding zero or multiplying by 1
 
             if user_chosen_operation == "no_op":
                 break
@@ -130,6 +130,7 @@ def user_round_prompt(subtotal_urp):
 
     
     return subtotal_urp
+
 def conversion_selection(subtotal_cs):
 
     user_requested_output_type = input("What form would you like your result in? options are:\nint, float, hex, and binary.\n")
