@@ -1,7 +1,7 @@
 #ideal gas law, p * v = n * R * T
 #R is constant 8.4344
 #n is constant 3 mol
-
+#output volume given temperature and pressure
 #V = N R T / P
 
 def volume_calculation(n,r,t,p):

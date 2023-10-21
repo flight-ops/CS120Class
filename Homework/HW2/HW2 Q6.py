@@ -1,5 +1,7 @@
 #gravitational potential energy calculator
 
+
+
 def grab_inputs():
     mass_local = float(input("What is the mass of your object or particle in kg (kilograms)?\n"))
     height_local = float(input("What is the height of your object or particle in m (meters)?\n"))
