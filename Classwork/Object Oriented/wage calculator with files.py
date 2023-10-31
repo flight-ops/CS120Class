@@ -1,7 +1,6 @@
 #objective: take in a file input with details like name, wage, hours worked
 #read these values and generate values for grosspay
 #append values to existing csv, or create a new file.
-
 import csv
 
 #open a file
@@ -13,9 +12,8 @@ class EmployerCalculator:
 
     def file_loader():
         with open('Classwork\Object Oriented\grosspay.csv') as csv_file:
-            reader = csv.reader(csv_file, delimiter = ",")
+            reader = csv.reader(csv_file, delimiter = ',')
             print(reader)
-
             line_count = 0 
             for row in csv_file:
                 if line_count ==0:
