@@ -1,6 +1,6 @@
 import csv
 
-with open('Classwork\Object Oriented\Examples\employee_birthday.txt','r') as csv_file:
+with open('Classwork\Object Oriented\Examples\employee_birthday.txt',) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
     for row in csv_reader:
