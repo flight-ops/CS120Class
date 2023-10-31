@@ -12,11 +12,11 @@ class EmployerCalculator:
         pass
 
     def file_loader():
-        with open('C:/Users/ezhou/Documents/CS120Repository/CS120Class/Classwork/Object Oriented/grosspay.csv'):
-            reader = csv.reader(csv_file)
+        with open('Classwork\Object Oriented\grosspay.csv') as csv_file:
+            reader = csv.reader(csv_file, delimiter = ",")
             print(reader)
 
-            line_count = 0
+            line_count = 0 
             for row in csv_file:
                 if line_count ==0:
                     print(f'Column names are:{",".join(row)}')
