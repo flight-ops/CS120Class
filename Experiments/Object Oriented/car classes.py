@@ -11,3 +11,4 @@ red_car = Cars(color= "red", mileage= 30000)
 
 for car in (blue_car,red_car):
     print (car)
+
