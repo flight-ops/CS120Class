@@ -7,7 +7,7 @@ class Rocket:
         self.fuel = fuel_type
 
     def spec_sheet(self):
-        return f'The {self.name} stands at {self.height} tall.\nIt has {self.engine_count} engines and uses {self.fuel} fuel.'
+        print(f'The {self.name} stands at {self.height} tall.\nIt has {self.engine_count} engines and uses {self.fuel} fuel.')
 
     def __str__(self):
         return f'The {self.name} stands at {self.height} tall.\nIt has {self.engine_count} engines and uses {self.fuel} fuel.'
