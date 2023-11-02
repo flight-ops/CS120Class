@@ -5,23 +5,30 @@
 #derived classes are dog and cat
 
 class Animal:
-    def __init__(self, animal_sound):
-        self.animal_sound = animal_sound
+    def __init__(self):
+        self.animal_sound = "huh"
+
+    def speak(self):
+        print(self.animal_sound)
+        
+
+class Dog(Animal):
+    def __init__(self):
+        self.animal_sound = "woof"
 
     def speak(self):
         print(self.animal_sound)
 
-class Dog(Animal):
-    def __init__(self, animal_sound) -> None:
-        self.animal_sound = "woof"
-        super().__init__(animal_sound)
-    
-
 class Cat(Animal):
-    def __init__(self, animal_sound) -> None:
-        self.animal_sound = "meown"
-        super().__init__(animal_sound)
+    def __init__(self):
+        self.animal_sound = "meow"
+
+    def speak(self):
+        print(self.animal_sound)
 
 
-base_animal = Animal.speak()
-print(base_animal)
+base_animal = Animal()
+
+dog_object = Dog()
+
+dog_object.speak()
