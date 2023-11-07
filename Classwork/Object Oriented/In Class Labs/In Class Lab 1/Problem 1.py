@@ -15,6 +15,7 @@ class Shape():
         print(self.perimeter)
 
 
+
 class Circle(Shape):
     def __init__(self, radius) -> None:
         self.area = float(math.pi*(radius**2))
@@ -25,9 +26,7 @@ class Rectangle(Shape):
         self.area = (width * height)
         self.perimeter = (2*width + 2*height)
 
-          
-    
-
+        
 
 example_circle = Circle(radius=10)
 

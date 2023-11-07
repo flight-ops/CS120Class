@@ -3,6 +3,8 @@
 
 #base class is animal
 #derived classes are dog and cat
+#create speak() method for each class?
+#derived classes should override base class
 
 class Animal:
     def __init__(self):
