@@ -165,9 +165,6 @@ def main():
     while main_loop == True:
         identity_check(location_prompt(Library1,Library2))
 
-    # Student.check_out_book(Student,Library_System.available_books,Library_System.checked_out_books,input("Which book would you like to check out?"))
-    # Student.see_all_books(Student,Library_System.available_books)
-
 main()
 
 
