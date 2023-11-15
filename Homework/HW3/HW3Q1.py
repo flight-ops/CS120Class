@@ -82,10 +82,10 @@ class Librarian:
         checked_out_count = 0
         for i in current_available:
             available_count +=1
-        print(f"There are currently {available_count} books available in the current library's system")
+        print(f"There is/are currently {available_count} book(s) available in the current library's system")
         for i in current_checked_out:
             checked_out_count +=1
-        print(f"There are currently {checked_out_count} books checked out in the current library's system")
+        print(f"There is/are currently {checked_out_count} book(s) checked out in the current library's system")
 
 #prompt user for identity then provide them with appropriate actions
 def identity_check(Library_System):
