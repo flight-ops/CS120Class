@@ -15,42 +15,37 @@
 
 
 class school:
-    def __init__(self):
-        pass
-
+    def __init__(self, student_list, teacher_list, school_record):
+        self.student_list = student_list
+        self.teacher_list = teacher_list
+        self.school_record = school_record
+    
     #method to hire a teacher given a name and a list of courses
-    def hire_teacher(self, teacher_name, courses_list):
-        new_teacher = teacher(teacher_name=teacher_name,teacher_dict=teacher_dict)
-        teacher_dict.append(new_teacher)
+    # def hire_teacher(self, teacher_name, courses_list):
+    #     new_teacher = teacher()
+    #     teacher_list.append(new_teacher)
 
-    def enroll_student(self, student_name, report_dict):
-        new_student = student(student_name=student_name,student_dict=student_dict)
-        student_dict.append(new_student)
+    # def enroll_student(self, student_name, report_list):
+    #     new_student = student(student_name=student_name,student_list=student_list)
+    #     student_list.append(new_student)
 
 class school_record:
     def __init__(self,record):
-        self.record = record
+        self.record = giant_action_log
 
     
-
 class teacher:
     def __init__(self, teacher_name, course_IDs) -> None:
         self.teacher_name = teacher_name
         self.course_IDs = course_IDs
 
-    def change_grade(self, student_dict):
+    def change_grade(self, student_list):
         pass
 
 class student:
-    def __init__(self, student_name, report_dict) -> None:
+    def __init__(self, student_name, report_list) -> None:
         self.student_name = student_name
-        self.student_report = report_dict
-
-
-
-
-def write_to_log():
-    pass
+        self.student_report = report_list
 
 
 
@@ -58,7 +53,7 @@ def write_to_log():
 #search for a student in a certain course
 def search_by_course(course_query):
     returnlist = []
-    for student in student_dict:
+    for student in student_list:
         if course_query in student.student_report:
             returnlist.append(student.student_name)
     print(returnlist)
@@ -66,7 +61,7 @@ def search_by_course(course_query):
 #search for a 
 def search_by_grade(grade_query):
     returnlist = []
-    for student in student_dict:
+    for student in student_list:
         print (student.student_report)
         for course in student.student_report:
             if student.student_report[course] == grade_query:
@@ -75,7 +70,7 @@ def search_by_grade(grade_query):
 
 def search_by_name(name_query):
     returnlist = []
-    for student in student_dict:
+    for student in student_list:
         if student.student_name == name_query:
             returnlist.append(student.student_name)
 
@@ -104,7 +99,7 @@ def log_action(action):
 def search_by_course_and_grade(course_query,grade_query):
     returnlist = []
 
-    for student in student_dict:
+    for student in student_list:
         #for each student, check if the student is in the specified class
         if course_query in student.student_report:
             #check if that student has the specified grade for the specified class
@@ -118,33 +113,68 @@ def search_by_course_and_grade(course_query,grade_query):
     elif returnlist == []:
         print("Error: no students matching parameters")
 
+def teacher_change_grade(student_list):
+    teacher_specify_student = input("Which student's grade would you like to change?\n")
+    for student in student_list:
+        if teacher_specify_student == student.student_name:
+            print("Found student.")
+            teacher_specify_course = input("Which course's grade would you like to change?\n")
+            teacher_specify_grade = input("What grade would you like to change it to?\n")
+            student.student_report[teacher_specify_course] = teacher_specify_grade
+            print("Successfully changed grade")
+            print(student.student_report[teacher_specify_course])
+            # print(f"Student {teacher_specify_student}")
+        elif teacher_specify_student not in student_list:
+            print("Student does not exist!")
+            break
+        else:
+            break
 
+# path of options a student can take
+def student_actions():
+    pass
+# path of options a teacher can take
+def teacher_actions():
+    pass
 
-
-# Student initialization
-student_1 = student("Timmy",report_dict= {"Course1":"A","Course2":"B"})
-student_2 = student("Tommy",report_dict={"Course1":"F","Course2":"C"})
-student_3 = student("Tammy",report_dict={"Course3":"A","Course1":"B"})
-student_4 = student("Rinny",report_dict={"Course5":"D","Course3":"A"})
-student_5 = student("Ronny",report_dict={"Course2":"B","Course3":"B"})
-
-teacher_1 = teacher("Prof. Richards",["Course1","Course2"])
-teacher_2 = teacher("Prof. Maharaja",["Course3","Course4"])
-teacher_3 = teacher("Prof. Mabsen",["Course5"])
-student_dict = [student_1,student_2,student_3,student_4,student_5]
-teacher_dict = [teacher_1,teacher_2]
 
 #using a CSV file would be wise, but I don't feel like it
 giant_action_log = []
+
+# Student initialization with names, courses, and their associated grades
+student_1 = student("Timmy",report_list= {"Course1":"A","Course2":"B"})
+student_2 = student("Tommy",report_list={"Course1":"F","Course2":"C"})
+student_3 = student("Tammy",report_list={"Course3":"A","Course1":"B"})
+student_4 = student("Rinny",report_list={"Course5":"D","Course3":"A"})
+student_5 = student("Ronny",report_list={"Course2":"B","Course3":"B"})
+
+# Teacher initialization with names, as well as courses taught
+teacher_1 = teacher("Prof. Richards",["Course1","Course2"])
+teacher_2 = teacher("Prof. Maharaja",["Course3","Course4"])
+teacher_3 = teacher("Prof. Mabsen",["Course5"])
+
+
+# object actualization
+#create a list for the students
+student_list = [student_1,student_2,student_3,student_4,student_5]
+#create a list for the teachers
+teacher_list = [teacher_1,teacher_2]
+#create school record object
+my_school_record = school_record(record=giant_action_log)
+#create school system object that contains the above lists/objects
+my_school_system = school(teacher_list=teacher_list,student_list=student_list,school_record=my_school_record)
 
 
 
 
 def main():
-    search_by_course_and_grade("Course1","B")
-    main_loop = True
-    while main_loop == True:
-        login()
-        print(giant_action_log)
+    # search_by_course_and_grade("Course1","B")
+    # print (student_1.student_report["Course1"])
+    # main_loop = True
+    # while main_loop == True:
+    #     login()
+    #     print(giant_action_log)
+    teacher_change_grade(student_list)
+    
     
 main()

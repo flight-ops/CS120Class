@@ -1,6 +1,10 @@
 #code!!!
 
-import os
+import matplotlib.pyplot as plt
+
+plt.cool
+
+
 
 def main():
     pass
