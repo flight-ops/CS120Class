@@ -20,71 +20,120 @@ class school:
         self.teacher_list = teacher_list
         self.school_record = school_record
     
-    #method to hire a teacher given a name and a list of courses
-    # def hire_teacher(self, teacher_name, courses_list):
-    #     new_teacher = teacher()
-    #     teacher_list.append(new_teacher)
+    # method to hire a teacher given a name and a list of courses
+    def hire_teacher(self):
+        hire_name = input("What is the name of the teacher to be hired?\n")
+        hire_course = input("What course do they teach? (Additional courses may be added later)\n")
+        new_teacher = teacher(hire_name,[hire_course])
+        teacher_list.append(new_teacher)
 
-    # def enroll_student(self, student_name, report_list):
-    #     new_student = student(student_name=student_name,student_list=student_list)
-    #     student_list.append(new_student)
+    def enroll_student(self, student_name, report_list):
+        new_student = student(student_name=student_name,student_list=student_list)
+        student_list.append(new_student)
 
 class school_record:
     def __init__(self,record):
-        self.record = giant_action_log
+        self.record = record
 
-    
 class teacher:
     def __init__(self, teacher_name, course_IDs) -> None:
         self.teacher_name = teacher_name
         self.course_IDs = course_IDs
 
-    def change_grade(self, student_list):
-        pass
+    def teacher_change_grade(self,student_list):
+        teacher_specify_student = input("Which student's grade would you like to change?\n")
+        for student in student_list:
+            if teacher_specify_student == student.student_name:
+                print("Found student.")
+                teacher_specify_course = input("Which course's grade would you like to change?\n")
+                teacher_specify_grade = input("What grade would you like to change it to?\n")
+                student.student_report[teacher_specify_course] = teacher_specify_grade
+                print("Successfully changed grade")
+                
+                print(f"Student {teacher_specify_student}'s grade in {teacher_specify_course} to {teacher_specify_grade}.")
+            elif teacher_specify_student not in student_list:
+                print("Student does not exist!")
+                break
+            else:
+                break
+
+    # search for a student with matching course and grades
+    def teacher_search_by_course_and_grade(self, course_query,grade_query):
+        returnlist = []
+
+        for student in student_list:
+            #for each student, check if the student is in the specified class
+            if course_query in student.student_report:
+                #check if that student has the specified grade for the specified class
+                if student.student_report[course_query] == grade_query:
+                    #if so, append to the returnlist
+                    returnlist.append(student.student_name)
+
+        # only return a list if non-null
+        if returnlist != []:
+            print(returnlist)
+        elif returnlist == []:
+            print("Error: no students matching parameters")
+
+    # search for a student / students with matching name(s)
+    def teacher_search_by_name(name_query):
+        returnlist = []
+        for student in student_list:
+            if student.student_name == name_query:
+                returnlist.append(student.student_name)
+
+        # only return a list if non-null
+        if returnlist != []:
+            print(returnlist)
+        elif returnlist == []:
+            print("Error: no students matching parameters")
 
 class student:
     def __init__(self, student_name, report_list) -> None:
         self.student_name = student_name
         self.student_report = report_list
 
+    def student_search_teacher_by_name(parameter_list):
+        student_search_query = input("What is the name of the teacher you'd like to search for?\n")
+        if student_search_query not in teacher_list:
+            print("Error: There are no teachers with that name.")
+            return
+        for teacher in teacher_list:
+            if student_search_query == teacher.teacher_name:
+                print(f"Found teacher. Courses offered: {teacher.course_IDs}")
 
 
+    def student_search_teacher_by_course(teacher_list):
+        returnlist = []
+        student_search_query = input("What class are you looking for?\n")
+        for teacher in teacher_list:
+            if student_search_query in teacher.course_IDs:
+                returnlist.append(teacher.teacher_name)
+        if returnlist == []:
+            print("Error: No teachers offer that course")
+        else:
+            print(f"The following teachers offer this course: {returnlist}")
+        
+                
 
-#search for a student in a certain course
-def search_by_course(course_query):
-    returnlist = []
-    for student in student_list:
-        if course_query in student.student_report:
-            returnlist.append(student.student_name)
-    print(returnlist)
-
-#search for a 
-def search_by_grade(grade_query):
-    returnlist = []
-    for student in student_list:
-        print (student.student_report)
-        for course in student.student_report:
-            if student.student_report[course] == grade_query:
-                returnlist.append(student.student_name)
-    print(returnlist)
-
-def search_by_name(name_query):
-    returnlist = []
-    for student in student_list:
-        if student.student_name == name_query:
-            returnlist.append(student.student_name)
-
+#login or suffer
 def login():
     login_loop = True
     while login_loop == True:
-        credential = input("log in or suffer (or quit, idk)")
+        credential = input("log in, suffer, or quit")
         credential = credential.lower()
         if credential == "teacher":
             print("ok you are a teacher now")
+            teacher_actions()
             log_action("teacher logged in")
         elif credential == "student":
             print("ok you are a student now")
+            student_actions()
             log_action("student logged in")
+        elif credential == "administrator":
+            print("ok you are an administrator now")
+            admin_actions()
+            log_action("admin logged in")
         elif credential == "quit":
             print ("ok quit")
             break
@@ -92,43 +141,6 @@ def login():
             print("oops something is wrong")
 
 
-#while I could create a csv file and write to it, I didn't feel like it. Instead, everything is appended to a gigantic list.
-def log_action(action):
-    giant_action_log.append(action)
-
-def search_by_course_and_grade(course_query,grade_query):
-    returnlist = []
-
-    for student in student_list:
-        #for each student, check if the student is in the specified class
-        if course_query in student.student_report:
-            #check if that student has the specified grade for the specified class
-            if student.student_report[course_query] == grade_query:
-                #if so, append to the returnlist
-                returnlist.append(student.student_name)
-
-    #if a value exists
-    if returnlist != []:
-        print(returnlist)
-    elif returnlist == []:
-        print("Error: no students matching parameters")
-
-def teacher_change_grade(student_list):
-    teacher_specify_student = input("Which student's grade would you like to change?\n")
-    for student in student_list:
-        if teacher_specify_student == student.student_name:
-            print("Found student.")
-            teacher_specify_course = input("Which course's grade would you like to change?\n")
-            teacher_specify_grade = input("What grade would you like to change it to?\n")
-            student.student_report[teacher_specify_course] = teacher_specify_grade
-            print("Successfully changed grade")
-            print(student.student_report[teacher_specify_course])
-            # print(f"Student {teacher_specify_student}")
-        elif teacher_specify_student not in student_list:
-            print("Student does not exist!")
-            break
-        else:
-            break
 
 # path of options a student can take
 def student_actions():
@@ -136,6 +148,23 @@ def student_actions():
 # path of options a teacher can take
 def teacher_actions():
     pass
+def admin_actions():
+    admin_action_request = input("What would you like to do?")
+
+    admin_action_request = admin_action_request.lower()
+
+    if admin_action_request == "view school log":
+        print(my_school_record.school_record)
+    elif admin_action_request == "hire teacher":
+        pass
+    elif admin_action_request == "enroll student":
+        my_school_system.enroll_student(student_name="",report_list="")
+    pass
+    
+#while I could create a csv file and write to it, I didn't feel like it. Instead, everything is appended to a gigantic list.
+def log_action(action):
+    giant_action_log.append(action)
+
 
 
 #using a CSV file would be wise, but I don't feel like it
@@ -158,7 +187,7 @@ teacher_3 = teacher("Prof. Mabsen",["Course5"])
 #create a list for the students
 student_list = [student_1,student_2,student_3,student_4,student_5]
 #create a list for the teachers
-teacher_list = [teacher_1,teacher_2]
+teacher_list = [teacher_1,teacher_2,teacher_3]
 #create school record object
 my_school_record = school_record(record=giant_action_log)
 #create school system object that contains the above lists/objects
@@ -174,7 +203,8 @@ def main():
     # while main_loop == True:
     #     login()
     #     print(giant_action_log)
-    teacher_change_grade(student_list)
     
-    
+    my_school_system.hire_teacher()
+    for teacher in my_school_system.teacher_list:
+        print(teacher.teacher_name,teacher.course_IDs)
 main()

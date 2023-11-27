@@ -12,8 +12,8 @@
 import random
 
 class Department:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, student_dict) -> None:
+        self.student_dict = student_dict
 
 class Student:
     def __init__(self, name, sports_enrolled) -> None:
@@ -156,15 +156,17 @@ def case_sensitive_reminder():
     print (" --- sport names are case sensitive ---")
 
 def main():
-
+    
     student1 = Student("student1",["Basketball","Baseball","Volleyball"])
     student2 = Student("student2",["Basketball","Badminton"])
     student3 = Student("student3",["Volleyball","Track and Field"])
     student4 = Student("student4",["Pickleball"])
 
-    student_dict = {student1.name:student1, student2.name:student2, student3.name:student3}
+    student_dict = {student1.name:student1, student2.name:student2, student3.name:student3, student4.name:student4}
+
+    school_dept = Department(student_dict=student_dict)
     case_sensitive_reminder()
-    identity_checker(student_dict)
+    identity_checker(school_dept.student_dict)
     
 
 
