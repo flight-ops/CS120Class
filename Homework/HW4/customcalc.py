@@ -1,51 +1,43 @@
 import tkinter as tk
 
+
 class Calculator:
     def __init__(self, root):
         self.root = root
-        self.root.title("Eddie's GUI Calculator")
+        self.root.title("Simple Calculator")
         self.entry = tk.Entry(root, width=20, font=('Arial', 18))
+        self.entry.grid(row=0, column=0, columnspan=4)
+        self.equation = ''
+        self.result = None
+
         
         #create buttons and specify their position on the screen
-        buttons = [  
-            "7", "8", "9", 
-            "4", "5", "6", 
-            "1", "2", "3", 
-            "0", ".", "=", 
-            
+        buttons = [
+            ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('/', 1, 3),
+            ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('*', 2, 3),
+            ('1', 3, 0), ('2', 3, 1), ('3', 3, 2), ('-', 3, 3),
+            ('0', 4, 0), ('C', 4, 1), ('=', 4, 2), ('+', 4, 3),
         ]
-        # [ 
-        #     ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('/', 1, 3),
-        #     ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('*', 2, 3),
-        #     ('1', 3, 0), ('2', 3, 1), ('3', 3, 2), ('-', 3, 3),
-        #     ('0', 4, 0), ('C', 4, 1), ('=', 4, 2), ('+', 4, 3),
-        # ]
-        row_count = 1
-        col_count = 0
+        buttoncount = 0
+        for row in range(3):
+            for column in range(3):
+                buttoncount += 1
+                tk.Button(root,text = str(buttoncount)).grid(row=row,column=column)
+        
 
-        for button in buttons:
-            tk.Button(root, text=button, font=('Arial', 12))
-            if col_count > 3:
-                col_count = 0
-                row_count += 1
-    
     def on_button_click(self, value):
         self.equation += value
         self.update_entry()
 
-    #method to clear the current entry
+    #method to clear the entry.
     def clear(self):
         self.equation = ''
         self.update_entry()
 
-    #method to change the current entry.
     def update_entry(self):
-        #remove outdated entry
         self.entry.delete(0, tk.END)
-        #insert current entry (self.equation)
         self.entry.insert(tk.END, self.equation)
 
-    #attempt to evaluate equation
     def calculate(self):
         try:
             self.result = eval(self.equation)
@@ -57,10 +49,14 @@ class Calculator:
             self.update_entry()
             print(f"Error: {e}")
 
+       
+
+   
 
 def main():
     root = tk.Tk()
     calc = Calculator(root)
     root.mainloop()
+
 
 main()
