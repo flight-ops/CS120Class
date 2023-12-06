@@ -30,7 +30,7 @@ class school:
     def enroll_student(self):
         enroll_name = input("What is the name of the student to be enrolled?\n")
         enroll_course = input("What course do they take? (Additional courses may be added later)?\n")
-        new_student = student(student_name=enroll_name,report_list={enroll_course:''})
+        new_student = student(student_name=enroll_name,report_dict={enroll_course:''})
         student_list.append(new_student)
 
 class teacher:
@@ -90,9 +90,9 @@ class teacher:
             print("Error: no students matching parameters")
 
 class student:
-    def __init__(self, student_name, report_list) -> None:
+    def __init__(self, student_name, report_dict) -> None:
         self.student_name = student_name
-        self.student_report = report_list
+        self.student_report = report_dict
 
     #should i allow students to view other students grades? no.
     #am i really tired and unwilling to change how the code works fundamentally? yes.
@@ -212,11 +212,11 @@ def log_action(action):
 
 
 # Student initialization with names, courses, and their associated grades
-student_1 = student("Timmy",report_list= {"Course1":"A","Course2":"B"})
-student_2 = student("Tommy",report_list={"Course1":"F","Course2":"C"})
-student_3 = student("Tammy",report_list={"Course3":"A","Course1":"B"})
-student_4 = student("Rinny",report_list={"Course5":"D","Course3":"A"})
-student_5 = student("Ronny",report_list={"Course2":"B","Course3":"B"})
+student_1 = student("Timmy",report_dict= {"Course1":"A","Course2":"B"})
+student_2 = student("Tommy",report_dict={"Course1":"F","Course2":"C"})
+student_3 = student("Tammy",report_dict={"Course3":"A","Course1":"B"})
+student_4 = student("Rinny",report_dict={"Course5":"D","Course3":"A"})
+student_5 = student("Ronny",report_dict={"Course2":"B","Course3":"B"})
 
 # Teacher initialization with names, as well as courses taught
 teacher_1 = teacher("Prof. Richards",["Course1","Course2"])

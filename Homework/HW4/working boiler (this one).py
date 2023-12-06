@@ -85,10 +85,12 @@ class Calculator:
         self.equation = ''
         self.update_entry()
 
+    #removes old entry and inserts new entry
     def update_entry(self):
         self.entry.delete(0, tk.END)
         self.entry.insert(tk.END, self.equation)
 
+    #method to actually calculate the given equation
     def calculate(self):
         try:
             self.result = eval(self.equation)
@@ -100,6 +102,7 @@ class Calculator:
             self.update_entry()
             print(f"Error: {e}")
 
+    #round up and down by converting the string to a float, applying a math round operator, converting it back to a string, then updating the screen with a new value.
     def round_up(self):
         self.result = float(self.equation)
         self.result = math.ceil(self.result)
@@ -111,6 +114,8 @@ class Calculator:
         self.equation = str(self.result)
         self.update_entry()
 
+
+        #convert to hex and binary by first converting to integers, then applying a math function, then updating the screen
     def hex_convert(self):
         self.equation = int(self.equation)
         self.result = hex(self.equation)
@@ -123,6 +128,7 @@ class Calculator:
         self.equation = str(self.result)
         self.update_entry()
 
+        #I'm not quite sure what I decided to do here. Why did I change it to an int???
     def decimal_convert(self):
         self.equation = int(self.equation)
         self.result = float(self.equation)
