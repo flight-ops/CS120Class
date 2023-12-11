@@ -59,9 +59,10 @@ def main():
     captechMVA = MVA(vehicles_processed=0,mva_location="somewhere in maryland")
 
     newcar1 = Vehicle(VIN_NUM="824JK",list_location=[28,15],speed="15mph",color="pastel blue",cylinder_no=4,wheel_no=4,passenger_no=2,registration_status=False)
-    newcar2 = Vehicle(VIN_NUM="NMPD42",list_location=[28,15],speed="15mph",color="gray",cylinder_no=4,wheel_no=4,passenger_no=4,registration_status=False)
-    newcar3 = Vehicle(VIN_NUM="MC117",list_location=[28,15],speed="50mph",color="warthog green",cylinder_no=4,wheel_no=4,passenger_no=2,registration_status=False)
-    newbike1 = Vehicle(VIN_NUM="76NM",list_location=[14,94],speed="30mph", color="cobalt",cylinder_no=2,wheel_no=2,passenger_no=1,registration_status=True)
+    newcar2 = Vehicle(VIN_NUM="NMPD42",list_location=[28,15],speed="90mph",color="mombasa gray",cylinder_no=4,wheel_no=4,passenger_no=4,registration_status=True)
+    newcar3 = Vehicle(VIN_NUM="MC117",list_location=[117,117],speed="50mph",color="warthog green",cylinder_no=4,wheel_no=4,passenger_no=2,registration_status=False)
+    newbike1 = Vehicle(VIN_NUM="76NM",list_location=[4,44],speed="30mph", color="cobalt",cylinder_no=2,wheel_no=2,passenger_no=1,registration_status=True)
+    newbike2 = Vehicle(VIN_NUM="KRMNL",list_location=[14,94],speed="90mph", color="orange",cylinder_no=2,wheel_no=2,passenger_no=1,registration_status=False)
 
 
     print(newcar1.passenger_no)
@@ -72,11 +73,14 @@ def main():
     
     
     #make a list of all of the vehicles
-    vehicle_list = [newcar1,newcar2,newcar3,newbike1]
+    vehicle_list = [newcar1,newcar2,newcar3,newbike1,newbike2]
 
     #update the vehicle's registration status and watch the counter go up
+    
     for vehicle in vehicle_list:
         captechMVA.update_registration_status(vehicle=vehicle)
 
+    for vehicle in vehicle_list:
+        print(f"Vehicle {vehicle.VIN_NUMBER} registration status: {vehicle.registration_status}")
 
 main()
