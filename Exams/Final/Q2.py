@@ -30,17 +30,25 @@ class MVA:
     def __init__(self,vehicles_processed,mva_location) -> None:
         self.vehicles_processed = vehicles_processed
         self.mva_location = mva_location
-        
+    
     def update_registration_status(self,vehicle):
+        #print current vehicle VIN and status
         print(f"Current registration status of vehicle {vehicle.VIN_NUMBER} is: {vehicle.registration_status}")
+
+        #prompt user for a change
+        #increment processed vehicle count by 1, then print the new registration status
         change_request = input("Change T/F?")
         if change_request == "T":
             vehicle.registration_status = True
+            self.increment_processed_vehicles()
+            print(f"Changed registration status of vehicle {vehicle.VIN_NUMBER} to: {vehicle.registration_status}")
         elif change_request == "F":
             vehicle.registration_status = False
+            self.increment_processed_vehicles()
+            print(f"Changed registration status of vehicle {vehicle.VIN_NUMBER} to: {vehicle.registration_status}")
         else:
             print("Error.")
-        self.increment_processed_vehicles()
+        
 
         print(f"Total processed vehicles of this location in {self.mva_location}:{self.vehicles_processed}")
 
@@ -48,16 +56,25 @@ class MVA:
         self.vehicles_processed +=1
 
 
-captechMVA = MVA(vehicles_processed=0,mva_location="somewhere in maryland")
 
-newcar1 = Vehicle(VIN_NUM="824JK",list_location=[28,15],speed="15mph",color="pastel blue",cylinder_no=4,wheel_no=4,passenger_no=2,registration_status=False)
+def main():
+    captechMVA = MVA(vehicles_processed=0,mva_location="somewhere in maryland")
 
-print(newcar1.passenger_no)
-newcar1.add_passenger(2)
-print(newcar1.passenger_no)
+    newcar1 = Vehicle(VIN_NUM="824JK",list_location=[28,15],speed="15mph",color="pastel blue",cylinder_no=4,wheel_no=4,passenger_no=2,registration_status=False)
 
-print(f"current registration status: {newcar1.registration_status}")
+    print(newcar1.passenger_no)
+    newcar1.add_passenger(2)
+    print(newcar1.passenger_no)
 
-captechMVA.update_registration_status(newcar1)
+    print(f"current registration status: {newcar1.registration_status}")
+    
+    #update car's registration status as many times as you want
 
-print(f"newcar current registration status: {newcar1.registration_status}")
+    #watch the counter go up
+    loop = True
+    while loop == True:
+        captechMVA.update_registration_status(newcar1)
+
+    print(f"newcar current registration status: {newcar1.registration_status}")
+
+main()
