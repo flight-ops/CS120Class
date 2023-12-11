@@ -24,8 +24,6 @@ class Vehicle:
         self.vehicle_speed = new_speed
 
 
-
-
 class MVA:
     def __init__(self,vehicles_processed,mva_location) -> None:
         self.vehicles_processed = vehicles_processed
@@ -37,7 +35,7 @@ class MVA:
 
         #prompt user for a change
         #increment processed vehicle count by 1, then print the new registration status
-        change_request = input("Change T/F?")
+        change_request = input("Change registration status, T/F\n")
         if change_request == "T":
             vehicle.registration_status = True
             self.increment_processed_vehicles()
@@ -50,7 +48,7 @@ class MVA:
             print("Error.")
         
 
-        print(f"Total processed vehicles of this location in {self.mva_location}:{self.vehicles_processed}")
+        print(f"Total processed vehicles of this location in {self.mva_location}:{self.vehicles_processed}\n")
 
     def increment_processed_vehicles(self):
         self.vehicles_processed +=1
@@ -61,6 +59,10 @@ def main():
     captechMVA = MVA(vehicles_processed=0,mva_location="somewhere in maryland")
 
     newcar1 = Vehicle(VIN_NUM="824JK",list_location=[28,15],speed="15mph",color="pastel blue",cylinder_no=4,wheel_no=4,passenger_no=2,registration_status=False)
+    newcar2 = Vehicle(VIN_NUM="NMPD42",list_location=[28,15],speed="15mph",color="gray",cylinder_no=4,wheel_no=4,passenger_no=4,registration_status=False)
+    newcar3 = Vehicle(VIN_NUM="MC117",list_location=[28,15],speed="50mph",color="warthog green",cylinder_no=4,wheel_no=4,passenger_no=2,registration_status=False)
+    newbike1 = Vehicle(VIN_NUM="76NM",list_location=[14,94],speed="30mph", color="cobalt",cylinder_no=2,wheel_no=2,passenger_no=1,registration_status=True)
+
 
     print(newcar1.passenger_no)
     newcar1.add_passenger(2)
@@ -68,13 +70,13 @@ def main():
 
     print(f"current registration status: {newcar1.registration_status}")
     
-    #update car's registration status as many times as you want
+    
+    #make a list of all of the vehicles
+    vehicle_list = [newcar1,newcar2,newcar3,newbike1]
 
-    #watch the counter go up
-    loop = True
-    while loop == True:
-        captechMVA.update_registration_status(newcar1)
+    #update the vehicle's registration status and watch the counter go up
+    for vehicle in vehicle_list:
+        captechMVA.update_registration_status(vehicle=vehicle)
 
-    print(f"newcar current registration status: {newcar1.registration_status}")
 
 main()

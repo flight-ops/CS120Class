@@ -56,11 +56,13 @@ class MVA:
         change_request = input("Change T/F?")
         if change_request == "T":
             vehicle.registration_status = True
+            self.increment_processed_vehicles()
         elif change_request == "F":
             vehicle.registration_status = False
+            self.increment_processed_vehicles()
         else:
             print("Error.")
-        self.increment_processed_vehicles()
+        
 
         print(f"Total processed vehicles of this location in {self.mva_location}:{self.vehicles_processed}")
 
